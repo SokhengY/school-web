@@ -1,4 +1,4 @@
-package com.sokheng.schoolweb.dto.CategoryDTO;
+package com.sokheng.schoolweb.dto.category_dto;
 
 import lombok.*;
 
