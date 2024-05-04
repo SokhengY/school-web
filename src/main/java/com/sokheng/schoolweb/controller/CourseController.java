@@ -1,7 +1,9 @@
 package com.sokheng.schoolweb.controller;
 
-import com.sokheng.schoolweb.dto.CourseDTO.CourseDTO;
-import com.sokheng.schoolweb.dto.CourseDTO.CourseRequest;
+import com.sokheng.schoolweb.dto.course_dto.CourseDTO;
+import com.sokheng.schoolweb.dto.course_dto.CourseRequest;
+import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceDTO;
+import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceRequest;
 import com.sokheng.schoolweb.entity.CourseEntity;
 import com.sokheng.schoolweb.mapper.CourseMapper;
 import com.sokheng.schoolweb.service.interfaces.CourseService;
@@ -23,8 +25,19 @@ public class CourseController {
     private final CourseService courseService;
     private final CourseMapper courseMapper;
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping("{id}")
+    public BaseResponse<CourseDTO> update(@PathVariable("id") Integer id, @RequestBody CourseRequest request){
+
+        return BaseResponse.<CourseDTO>builder()
+                .code(HttpStatus.OK.value())
+                .message("success")
+                .data(courseMapper.from(courseService.update(id, courseMapper.from(request))))
+                .build();
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("{id}")
     public void deleteById(@PathVariable("id") Integer id){
 
         courseService.deleteById(id);
@@ -32,10 +45,7 @@ public class CourseController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public BaseResponseList<List<CourseDTO>> findAll(
-            @RequestParam(value = "page", defaultValue = "${spring.pagination.default.page}") Integer page,
-            @RequestParam(value = "size", defaultValue = "${spring.pagination.default.size}") Integer size
-    ){
+    public BaseResponseList<List<CourseDTO>> findAll(@RequestParam(value = "page", defaultValue = "${spring.pagination.default.page}") Integer page, @RequestParam(value = "size", defaultValue = "${spring.pagination.default.size}") Integer size){
 
         BaseDataList<CourseEntity> list = courseService.findAll(page, size);
         return BaseResponseList.<List<CourseDTO>>builder()

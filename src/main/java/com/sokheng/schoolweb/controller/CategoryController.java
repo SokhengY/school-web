@@ -1,7 +1,7 @@
 package com.sokheng.schoolweb.controller;
 
 import com.sokheng.schoolweb.utils.BaseDataList;
-import com.sokheng.schoolweb.dto.CategoryDTO.CategoryDTO;
+import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
 import com.sokheng.schoolweb.entity.CategoryEntity;
 import com.sokheng.schoolweb.mapper.CategoryMapper;
 import com.sokheng.schoolweb.service.interfaces.CategoryService;
@@ -23,8 +23,19 @@ public class CategoryController {
     private final CategoryService categoryService;
     private final CategoryMapper categoryMapper;
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping("{id}")
+    public BaseResponse<CategoryDTO> update(@PathVariable("id") Integer id, @RequestBody CategoryDTO dto){
+
+        return BaseResponse.<CategoryDTO>builder()
+                .code(HttpStatus.OK.value())
+                .message("success")
+                .data(categoryMapper.from(categoryService.update(id, dto)))
+                .build();
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("{id}")
     public void softDelete(@PathVariable("id") Integer id){
 
         categoryService.softDelete(id);
@@ -33,10 +44,7 @@ public class CategoryController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public BaseResponseList<List<CategoryDTO>> findAll(
-            @RequestParam(value = "page", defaultValue = "${spring.pagination.default.page}") Integer page,
-            @RequestParam(value = "size", defaultValue = "${spring.pagination.default.size}") Integer size
-    ){
+    public BaseResponseList<List<CategoryDTO>> findAll(@RequestParam(value = "page", defaultValue = "${spring.pagination.default.page}") Integer page, @RequestParam(value = "size", defaultValue = "${spring.pagination.default.size}") Integer size){
 
         BaseDataList<CategoryEntity> entities = categoryService.findAll(page, size);
         return BaseResponseList.<List<CategoryDTO>>builder()

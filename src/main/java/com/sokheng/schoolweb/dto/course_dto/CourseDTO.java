@@ -1,10 +1,12 @@
-package com.sokheng.schoolweb.dto.CourseDTO;
+package com.sokheng.schoolweb.dto.course_dto;
 
-import com.sokheng.schoolweb.dto.CategoryDTO.CategoryDTO;
+import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
+import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceDTO;
 import com.sokheng.schoolweb.utils.common_enum.StatusEnum;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,5 +29,7 @@ public class CourseDTO {
     private boolean isDeleted;
 
     private CategoryDTO category;
+
+    private List<PriceDTO> price;
 
 }
