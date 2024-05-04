@@ -11,6 +11,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  pagination:
+    default:
+      page: ${PAGE:1}
+      size: ${SIZE:10}
 logging:
   level:
     org.hibernate: DEBUG
