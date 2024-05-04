@@ -1,13 +1,15 @@
 package com.sokheng.schoolweb.mapper;
 
-import com.sokheng.schoolweb.dto.CategoryDTO;
+import com.sokheng.schoolweb.dto.CategoryDTO.CategoryDTO;
 import com.sokheng.schoolweb.entity.CategoryEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
+
+    List<CategoryDTO> from(List<CategoryEntity> list);
 
     CategoryEntity from(CategoryDTO dto);
 
