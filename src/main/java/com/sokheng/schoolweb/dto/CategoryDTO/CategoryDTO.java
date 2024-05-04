@@ -1,4 +1,4 @@
-package com.sokheng.schoolweb.dto;
+package com.sokheng.schoolweb.dto.CategoryDTO;
 
 import lombok.*;
 
@@ -17,5 +17,7 @@ public class CategoryDTO {
     private Timestamp createdAt;
 
     private Timestamp updatedAt;
+
+    private boolean isDeleted;
 
 }
