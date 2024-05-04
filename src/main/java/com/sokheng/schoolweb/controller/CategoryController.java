@@ -8,11 +8,13 @@ import com.sokheng.schoolweb.service.interfaces.CategoryService;
 import com.sokheng.schoolweb.utils.BaseResponse;
 import com.sokheng.schoolweb.utils.BaseResponseList;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1.0.0/category")
@@ -26,6 +28,7 @@ public class CategoryController {
     public void softDelete(@PathVariable("id") Integer id){
 
         categoryService.softDelete(id);
+        log.debug("CategoryController::softDelete "+ id);
     }
 
     @ResponseStatus(HttpStatus.OK)

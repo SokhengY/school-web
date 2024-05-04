@@ -28,7 +28,8 @@ public class CategoryEntity {
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @UpdateTimestamp
+//    @UpdateTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)// Ensure that the property is not set when creating the entity
     private Timestamp updatedAt;
 
     private boolean isDeleted = false;
