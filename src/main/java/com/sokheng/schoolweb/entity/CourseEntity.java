@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -31,8 +33,11 @@ public class CourseEntity {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
+//    @UpdateTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)// Ensure that the property is not set when creating the entity
     private Timestamp updatedAt;
 
     private boolean isDeleted = false;
