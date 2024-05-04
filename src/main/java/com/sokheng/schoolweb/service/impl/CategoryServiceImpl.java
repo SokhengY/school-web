@@ -1,5 +1,6 @@
 package com.sokheng.schoolweb.service.impl;
 
+import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
 import com.sokheng.schoolweb.utils.BaseDataList;
 import com.sokheng.schoolweb.entity.CategoryEntity;
 import com.sokheng.schoolweb.exception.NotFoundException;
@@ -11,11 +12,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @RequiredArgsConstructor
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+
+    @Override
+    public CategoryEntity update(Integer id, CategoryDTO dto) {
+
+        CategoryEntity category = this.findById(id);
+        category.setName(dto.getName());
+        category.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        return categoryRepository.save(category);
+    }
 
     @Override
     public void softDelete(Integer id) {

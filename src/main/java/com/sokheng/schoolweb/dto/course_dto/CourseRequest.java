@@ -1,11 +1,15 @@
-package com.sokheng.schoolweb.dto.CourseDTO;
+package com.sokheng.schoolweb.dto.course_dto;
 
+import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceRequest;
 import com.sokheng.schoolweb.utils.common_enum.StatusEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.List;
 
 @Setter
 @Getter
@@ -25,5 +29,8 @@ public class CourseRequest {
 
     @NotNull(message = "required category id")
     private Integer categoryId;
+
+    @Valid
+    private List<PriceRequest> price;
 
 }

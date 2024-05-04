@@ -1,6 +1,6 @@
 package com.sokheng.schoolweb.mapper;
 
-import com.sokheng.schoolweb.dto.CategoryDTO.CategoryDTO;
+import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
 import com.sokheng.schoolweb.entity.CategoryEntity;
 import org.mapstruct.Mapper;
 
