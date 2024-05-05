@@ -6,11 +6,14 @@ import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceRequest;
 import com.sokheng.schoolweb.entity.CategoryEntity;
 import com.sokheng.schoolweb.entity.CourseEntity;
 import com.sokheng.schoolweb.entity.PriceEntity;
+import com.sokheng.schoolweb.entity.ScheduleEntity;
 import com.sokheng.schoolweb.exception.NotFoundException;
 import com.sokheng.schoolweb.mapper.CourseMapper;
 import com.sokheng.schoolweb.mapper.PriceMapper;
+import com.sokheng.schoolweb.mapper.ScheduleMapper;
 import com.sokheng.schoolweb.repository.CourseRepository;
 import com.sokheng.schoolweb.repository.PriceRepository;
+import com.sokheng.schoolweb.repository.ScheduleRepository;
 import com.sokheng.schoolweb.service.interfaces.CategoryService;
 import com.sokheng.schoolweb.service.interfaces.CourseService;
 import com.sokheng.schoolweb.utils.BaseDataList;
@@ -32,9 +35,11 @@ public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
     private final PriceRepository priceRepository;
+    private final ScheduleRepository scheduleRepository;
     private final CategoryService categoryService;
     private final CourseMapper courseMapper;
     private final PriceMapper priceMapper;
+    private final ScheduleMapper scheduleMapper;
 
     @Override
     public CourseEntity update(Integer id, CourseDTO dto) {
@@ -95,7 +100,13 @@ public class CourseServiceImpl implements CourseService {
         //insert price
         List<PriceEntity> priceEntities = priceMapper.fromListDTO(dto.getPrice());
         priceEntities.forEach(price -> price.setCourseEntity(courseEntity));
-        priceRepository.saveAll(priceEntities);
+        List<PriceEntity> priceEntityList = priceRepository.saveAll(priceEntities);
+        courseEntity.setPriceEntities(priceEntityList);
+        //insert schedule
+        List<ScheduleEntity> scheduleEntities = scheduleMapper.from(dto.getSchedule());
+        scheduleEntities.forEach(schedule -> schedule.setCourseEntity(courseEntity));
+        List<ScheduleEntity> scheduleEntityList = scheduleRepository.saveAll(scheduleEntities);
+        courseEntity.setScheduleEntities(scheduleEntityList);
         return courseEntity;
     }
 }
