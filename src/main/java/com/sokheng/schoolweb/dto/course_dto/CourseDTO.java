@@ -2,6 +2,7 @@ package com.sokheng.schoolweb.dto.course_dto;
 
 import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
 import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceDTO;
+import com.sokheng.schoolweb.dto.course_dto.schedule_dto.ScheduleDTO;
 import com.sokheng.schoolweb.utils.common_enum.StatusEnum;
 import lombok.*;
 
@@ -31,5 +32,7 @@ public class CourseDTO {
     private CategoryDTO category;
 
     private List<PriceDTO> price;
+
+    private List<ScheduleDTO> schedule;
 
 }

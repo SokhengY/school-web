@@ -1,6 +1,7 @@
 package com.sokheng.schoolweb.dto.course_dto;
 
 import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceRequest;
+import com.sokheng.schoolweb.dto.course_dto.schedule_dto.ScheduleRequest;
 import com.sokheng.schoolweb.utils.common_enum.StatusEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,5 +33,8 @@ public class CourseRequest {
 
     @Valid
     private List<PriceRequest> price;
+
+    @Valid
+    private List<ScheduleRequest> schedule;
 
 }
