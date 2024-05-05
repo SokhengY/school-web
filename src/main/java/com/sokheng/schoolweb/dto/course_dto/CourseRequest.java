@@ -31,6 +31,8 @@ public class CourseRequest {
     @NotNull(message = "required category id")
     private Integer categoryId;
 
+    private Integer promotionId;
+
     @Valid
     private List<PriceRequest> price;
 

@@ -10,12 +10,14 @@ import com.sokheng.schoolweb.entity.ScheduleEntity;
 import com.sokheng.schoolweb.exception.NotFoundException;
 import com.sokheng.schoolweb.mapper.CourseMapper;
 import com.sokheng.schoolweb.mapper.PriceMapper;
+import com.sokheng.schoolweb.mapper.PromotionMapper;
 import com.sokheng.schoolweb.mapper.ScheduleMapper;
 import com.sokheng.schoolweb.repository.CourseRepository;
 import com.sokheng.schoolweb.repository.PriceRepository;
 import com.sokheng.schoolweb.repository.ScheduleRepository;
 import com.sokheng.schoolweb.service.interfaces.CategoryService;
 import com.sokheng.schoolweb.service.interfaces.CourseService;
+import com.sokheng.schoolweb.service.interfaces.PromotionService;
 import com.sokheng.schoolweb.utils.BaseDataList;
 import com.sokheng.schoolweb.utils.BasePagination;
 import lombok.RequiredArgsConstructor;
@@ -36,10 +38,12 @@ public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
     private final PriceRepository priceRepository;
     private final ScheduleRepository scheduleRepository;
+    private final PromotionService promotionService;
     private final CategoryService categoryService;
     private final CourseMapper courseMapper;
     private final PriceMapper priceMapper;
     private final ScheduleMapper scheduleMapper;
+    private final PromotionMapper promotionMapper;
 
     @Override
     public CourseEntity update(Integer id, CourseDTO dto) {
@@ -92,9 +96,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseEntity create(CourseDTO dto) {
 
-        CategoryEntity category = categoryService.findById(dto.getCategory().getId());
         CourseEntity course = courseMapper.from(dto);
-        course.setCategoryEntity(category);
+        course.setCategoryEntity(categoryService.findById(dto.getCategory().getId()));
+        if (Objects.nonNull(dto.getPromotion())){
+            course.setPromotionEntity(promotionService.findById(dto.getPromotion().getId()));
+        }
         //insert course
         CourseEntity courseEntity = courseRepository.save(course);
         //insert price

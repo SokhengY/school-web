@@ -2,6 +2,7 @@ package com.sokheng.schoolweb.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -26,6 +27,7 @@ public class PromotionEntity {
 
     private Timestamp endDate;
 
+    @CreationTimestamp
     private Timestamp createdAt;
 
     private Timestamp updatedAt;

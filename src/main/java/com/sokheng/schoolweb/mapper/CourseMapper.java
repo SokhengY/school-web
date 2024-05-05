@@ -23,6 +23,7 @@ public interface CourseMapper {
     @Mapping(source = "price", target = "priceEntities")
     CourseEntity from(CourseDTO dto);
 
+    @Mapping(source = "promotionEntity", target = "promotion")
     @Mapping(source = "scheduleEntities", target = "schedule")
     @Mapping(source = "categoryEntity", target = "category")
     @Mapping(source = "priceEntities", target = "price")
@@ -30,6 +31,7 @@ public interface CourseMapper {
 
     @Mapping(target = "schedule", expression = "java(mapSchedule(request))")
     @Mapping(source = "categoryId", target = "category.id")
+    @Mapping(source = "promotionId", target = "promotion.id")
     @Mapping(source = "price", target = "price")
     CourseDTO from(CourseRequest request);
 
