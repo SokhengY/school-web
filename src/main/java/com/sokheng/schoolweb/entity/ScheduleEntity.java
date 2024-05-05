@@ -21,7 +21,7 @@ public class ScheduleEntity {
 
     private Timestamp toTime;
 
-    private boolean isDeleted;
+    private boolean isDeleted = false;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
