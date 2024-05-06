@@ -50,14 +50,10 @@ public class CourseEntity {
     @JoinColumn(name = "category_id")
     private CategoryEntity categoryEntity;
 
-    @OneToMany(mappedBy = "courseEntity")
+    @OneToMany(mappedBy = "courseEntity", fetch = FetchType.EAGER)
     private List<PriceEntity> priceEntities;
 
-    @OneToMany(mappedBy = "courseEntity")
+    @OneToMany(mappedBy = "courseEntity", fetch = FetchType.EAGER)
     private List<ScheduleEntity> scheduleEntities;
-
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "registration", joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name = "customer_id")})
-//    private Set<RegistrationEntity> registrationEntities = new HashSet<>();
 
 }

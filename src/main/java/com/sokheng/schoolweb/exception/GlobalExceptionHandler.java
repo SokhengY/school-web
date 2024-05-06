@@ -29,7 +29,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = SQLException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleMethodArgumentNotValid(SQLException ex){
+    public String handleSQLException(SQLException ex){
+
+        return ex.getMessage();
+    }
+
+    @ExceptionHandler(value = BadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleBadRequestException(BadRequestException ex){
 
         return ex.getMessage();
     }

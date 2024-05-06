@@ -5,7 +5,9 @@ import com.sokheng.schoolweb.utils.common_enum.GenderEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -25,7 +27,7 @@ public class CustomerEntity {
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
 
-    private Integer age;
+    private Timestamp dob;
 
     @Enumerated(EnumType.STRING)
     private OccupationEnum occupation;
@@ -36,11 +38,11 @@ public class CustomerEntity {
 
     private String address;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "registration",
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
-    private Set<CourseEntity> courseEntities = new HashSet<>();
+    private List<CourseEntity> courseEntities;
 }
