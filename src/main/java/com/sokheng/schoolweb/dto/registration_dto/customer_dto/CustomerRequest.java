@@ -22,7 +22,7 @@ public class CustomerRequest {
     private GenderEnum gender;
 
     @NotNull(message = "fromTime is required")
-    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "dob format should be yyyy-MM-dd")
+    @Pattern(regexp = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12]\\d|3[01])$", message = "dob format should be yyyy-MM-dd")
     private String dob;
 
     @NotNull(message = "occupation is required")

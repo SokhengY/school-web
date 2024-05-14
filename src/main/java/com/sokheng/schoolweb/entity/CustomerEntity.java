@@ -45,4 +45,8 @@ public class CustomerEntity {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<CourseEntity> courseEntities;
+
+    public CustomerEntity(Integer id) {
+        this.id = id;
+    }
 }
