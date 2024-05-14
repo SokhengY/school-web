@@ -34,6 +34,7 @@ public class PromotionServiceImpl implements PromotionService {
         PromotionEntity entity = this.findById(id);
         entity.setRequirement(request.getRequirement());
         entity.setAmount(request.getAmount());
+        entity.setCurrency(request.getCurrency());
         entity.setStartDate(DateTimeUtil.stringToTimestamp(request.getStartDate()));
         entity.setEndDate(DateTimeUtil.stringToTimestamp(request.getEndDate()));
         entity.setUpdatedAt(new Timestamp(System.currentTimeMillis()));

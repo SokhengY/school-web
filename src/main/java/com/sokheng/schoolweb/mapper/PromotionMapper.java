@@ -17,6 +17,7 @@ public interface PromotionMapper {
 
     List<PromotionDTO> from(List<PromotionEntity> list);
 
+    @Mapping(target = "currency", source = "currency")
     @Mapping(target = "startDate", source = "startDate", qualifiedByName = "stringToTimestamp")
     @Mapping(target = "endDate", source = "endDate", qualifiedByName = "stringToTimestamp")
     PromotionDTO from(PromotionRequest request);

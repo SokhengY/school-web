@@ -1,8 +1,6 @@
-package com.sokheng.schoolweb.dto.promotion_dto;
+package com.sokheng.schoolweb.dto.payment_dto;
 
 import com.sokheng.schoolweb.utils.common_enum.CurrencyEnum;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,24 +12,15 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PromotionDTO {
+public class PaymentDetailDTO {
 
     private Integer id;
 
-    private String requirement;
+    private Double totalAmount;
 
-    private Double amount;
+    private Double amountPaid;
 
     private CurrencyEnum currency;
 
-    private Timestamp startDate;
-
-    private Timestamp endDate;
-
     private Timestamp createdAt;
-
-    private Timestamp updatedAt;
-
-    private boolean isDeleted;
-
 }
