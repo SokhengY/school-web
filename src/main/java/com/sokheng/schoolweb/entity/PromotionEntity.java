@@ -1,5 +1,6 @@
 package com.sokheng.schoolweb.entity;
 
+import com.sokheng.schoolweb.utils.common_enum.CurrencyEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -22,6 +23,9 @@ public class PromotionEntity {
     private String requirement;
 
     private Double amount;
+
+    @Enumerated(EnumType.STRING)
+    private CurrencyEnum currency;
 
     private Timestamp startDate;
 
