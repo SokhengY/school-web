@@ -6,7 +6,6 @@ import com.sokheng.schoolweb.entity.PromotionEntity;
 import com.sokheng.schoolweb.mapper.PromotionMapper;
 import com.sokheng.schoolweb.service.interfaces.PromotionService;
 import com.sokheng.schoolweb.utils.BaseDataList;
-import com.sokheng.schoolweb.utils.BasePagination;
 import com.sokheng.schoolweb.utils.BaseResponse;
 import com.sokheng.schoolweb.utils.BaseResponseList;
 import jakarta.validation.Valid;
@@ -73,7 +72,7 @@ public class PromotionController {
         return BaseResponse.<PromotionDTO>builder()
                 .code(HttpStatus.CREATED.value())
                 .message("success")
-                .data(promotionMapper.from(promotionService.create(promotionMapper.from(request))))
+                .data(promotionMapper.from(promotionService.create(promotionMapper.from(promotionMapper.from(request)))))
                 .build();
     }
 }

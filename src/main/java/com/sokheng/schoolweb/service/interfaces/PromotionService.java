@@ -1,6 +1,5 @@
 package com.sokheng.schoolweb.service.interfaces;
 
-import com.sokheng.schoolweb.dto.promotion_dto.PromotionDTO;
 import com.sokheng.schoolweb.dto.promotion_dto.PromotionRequest;
 import com.sokheng.schoolweb.entity.PromotionEntity;
 import com.sokheng.schoolweb.utils.BaseDataList;
@@ -17,5 +16,5 @@ public interface PromotionService {
 
     void existsById(Integer id);
 
-    PromotionEntity create(PromotionDTO dto);
+    PromotionEntity create(PromotionEntity entity);
 }

@@ -1,6 +1,5 @@
 package com.sokheng.schoolweb.service.impl;
 
-import com.sokheng.schoolweb.dto.promotion_dto.PromotionDTO;
 import com.sokheng.schoolweb.dto.promotion_dto.PromotionRequest;
 import com.sokheng.schoolweb.entity.PromotionEntity;
 import com.sokheng.schoolweb.exception.NotFoundException;
@@ -83,8 +82,8 @@ public class PromotionServiceImpl implements PromotionService {
     }
 
     @Override
-    public PromotionEntity create(PromotionDTO dto) {
+    public PromotionEntity create(PromotionEntity entity) {
 
-        return promotionRepository.save(promotionMapper.from(dto));
+        return promotionRepository.save(entity);
     }
 }
