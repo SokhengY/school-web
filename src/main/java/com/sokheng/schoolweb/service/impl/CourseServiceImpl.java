@@ -43,7 +43,6 @@ public class CourseServiceImpl implements CourseService {
     private final CourseMapper courseMapper;
     private final PriceMapper priceMapper;
     private final ScheduleMapper scheduleMapper;
-    private final PromotionMapper promotionMapper;
 
     @Override
     public CourseEntity update(Integer id, CourseDTO dto) {
