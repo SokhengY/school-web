@@ -47,7 +47,7 @@ public class RegistrationController {
         if (request.getCourseId().size() == 0){
             throw new BadRequestException("course id is required");
         }
-        if (request.getPromotionId() <= 0){
+        if (request.getPromotionId() != null && request.getPromotionId() <= 0){
             request.setPromotionId(null);
         }
         return BaseResponse.<List<RegistrationResponse>>builder()

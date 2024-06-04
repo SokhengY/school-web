@@ -1,4 +1,4 @@
-package com.sokheng.schoolweb.service;
+package com.sokheng.schoolweb.service.Impl;
 
 import com.sokheng.schoolweb.dto.category_dto.CategoryDTO;
 import com.sokheng.schoolweb.dto.course_dto.CourseDTO;
