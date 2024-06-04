@@ -1,4 +1,4 @@
-package com.sokheng.schoolweb.service;
+package com.sokheng.schoolweb.service.Impl;
 
 import com.sokheng.schoolweb.dto.course_dto.price_dto.PriceRequest;
 import com.sokheng.schoolweb.dto.promotion_dto.PromotionRequest;
